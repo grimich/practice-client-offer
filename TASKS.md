@@ -12,5 +12,5 @@
 - [x] Move the process before cases and remove unclear or trust-reducing wording.
 - [x] Fix anchor scrolling after `#start` and `#top`.
 - [x] Add and export the site-specific social preview.
-- [ ] Retry the reserved Sites deployment when its source-repository credential accepts pushes.
+- [x] Publish the revised build through the reserved Sites project.
 - [ ] Add a direct messenger or calendar link when the user supplies it.

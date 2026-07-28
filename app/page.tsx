@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AnchorLink } from "./AnchorLink";
 import { CopyCta } from "./CopyCta";
 
 export const metadata: Metadata = {
@@ -84,12 +85,12 @@ export default function Home() {
   return (
     <main>
       <nav className="nav wrap" aria-label="Основная навигация">
-        <a className="brand" href="#top" aria-label="В начало">
+        <AnchorLink className="brand" href="#top" ariaLabel="В начало">
           СЛЕДУЮЩИЙ <span>КЛИЕНТ</span>
-        </a>
-        <a className="nav-link" href="#start">
+        </AnchorLink>
+        <AnchorLink className="nav-link" href="#start">
           Хочу следующего клиента ↘
-        </a>
+        </AnchorLink>
       </nav>
 
       <section className="hero wrap" id="top">
@@ -110,9 +111,9 @@ export default function Home() {
               Устали ждать, пока клиенты сами начнут кидаться в вас деньгами?
             </p>
           </div>
-          <a className="button button-accent" href="#start">
+          <AnchorLink className="button button-accent" href="#start">
             Хочу следующего клиента
-          </a>
+          </AnchorLink>
         </div>
         <div className="scribble" aria-hidden="true">
           ↓ через экспертность и нетворк
@@ -265,12 +266,12 @@ export default function Home() {
 
       <footer className="footer wrap">
         <p>© 2026 · Следующий клиент</p>
-        <a href="#top">Наверх ↑</a>
+        <AnchorLink href="#top">Наверх ↑</AnchorLink>
       </footer>
 
-      <a className="mobile-cta" href="#start">
+      <AnchorLink className="mobile-cta" href="#start">
         Хочу следующего клиента
-      </a>
+      </AnchorLink>
     </main>
   );
 }

@@ -69,6 +69,17 @@ test("global CSS leaves anchor scrolling interruptible", async () => {
   assert.doesNotMatch(css, /html\s*\{[^}]*scroll-behavior:\s*smooth/i);
 });
 
+test("same-page links bypass the static runtime hash scroll lock", async () => {
+  const source = await readFile(
+    new URL("../app/AnchorLink.tsx", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(source, /event\.preventDefault\(\)/);
+  assert.match(source, /event\.stopPropagation\(\)/);
+  assert.match(source, /scrollIntoView\(\{ behavior: "auto", block: "start" \}\)/);
+});
+
 test("GitHub Pages snapshot references production assets under the repository base path", async () => {
   const html = await readFile(
     new URL("../docs/index.html", import.meta.url),
