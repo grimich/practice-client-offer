@@ -16,6 +16,10 @@ await cp(
   new URL("../public/favicon.svg", import.meta.url),
   new URL("../docs/favicon.svg", import.meta.url),
 );
+await cp(
+  new URL("../public/og.png", import.meta.url),
+  new URL("../docs/og.png", import.meta.url),
+);
 
 const { default: worker } = await import(workerUrl.href);
 const response = await worker.fetch(
@@ -38,7 +42,11 @@ if (!response.ok) {
 let html = await response.text();
 html = html
   .replaceAll('"/assets/', `"${base}/assets/`)
-  .replaceAll('"/favicon.svg', `"${base}/favicon.svg`);
+  .replaceAll('"/favicon.svg', `"${base}/favicon.svg`)
+  .replaceAll(
+    "http://localhost/og.png",
+    `https://grimich.github.io${base}/og.png`,
+  );
 
 await writeFile(new URL("../docs/index.html", import.meta.url), html, "utf8");
 

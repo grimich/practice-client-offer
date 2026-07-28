@@ -7,15 +7,17 @@ export const metadata: Metadata = {
     "Работа для специалистов с личной практикой: находим сильное предложение и проверяем его через тёплый нетворк.",
 };
 
-const fit = [
-  "Это тем, кто делает свою практику / запускает свои продукты за деньги.",
-  "Если очереди клиентов, кидающих в вас деньги, пока не случилось.",
-  "Если не знаете, как продвигаться.",
-  "Если все клиенты — сарафан.",
-  "Если ваш продукт / услуга близки к вашей профессиональной карьере и там 5+ лет опыта.",
-  "Если в расписании всё ещё куча свободных окон.",
-  "Если задолбались учиться и повышать квалификацию.",
-  "Особенно если ваше предложение в духе «я могу всё что угодно сделать для кого угодно».",
+const audience = [
+  "Делаете свою практику / запускаете свои продукты за деньги.",
+  "Ваш продукт / услуга близки к вашей профессиональной карьере и там 5+ лет опыта.",
+];
+
+const symptoms = [
+  "Очереди клиентов, кидающих в вас деньги, пока не случилось.",
+  "Все клиенты — сарафан.",
+  "Не знаете, как продвигаться.",
+  "В расписании всё ещё куча свободных окон.",
+  "Ваше предложение в духе «я могу всё что угодно сделать для кого угодно».",
   "И одновременно чуть подёргивает от слова «продажи».",
 ];
 
@@ -56,14 +58,27 @@ const sessions = [
 ];
 
 const outcomes = [
-  "Получим сразу клиентов",
+  "Цель — следующий клиент",
   "Проверим от 1 до 5 гипотез на реальности",
   "Соберём уверенный оффер",
   "Сузимся в нишу",
-  "Соберём ICP",
+  "Соберём портрет целевого клиента",
   "Соберём финмодельку",
-  "Выберем и проверим подходящие каналы привлечения",
+  "Выберем и проверим подходящие способы выхода на клиентов",
 ];
+
+function OfferList({ items }: { items: string[] }) {
+  return (
+    <ul className="check-list">
+      {items.map((item) => (
+        <li key={item}>
+          <span aria-hidden="true">—</span>
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default function Home() {
   return (
@@ -78,14 +93,23 @@ export default function Home() {
       </nav>
 
       <section className="hero wrap" id="top">
-        <div className="eyebrow">Поиск проблемы, стоящей решения, через экспертность и нетворк</div>
+        <div className="eyebrow">
+          Для специалистов с личной практикой, услугами и продуктами
+        </div>
         <h1>
           Найду вам следующего <em>клиента</em> за 4 недели работы
         </h1>
         <div className="hero-bottom">
-          <p className="hero-copy">
-            Устали ждать, пока клиенты сами начнут кидаться в вас деньгами?
-          </p>
+          <div className="hero-copy-stack">
+            <p className="hero-copy">
+              Я помогаю докрутить предложение и собрать гипотезы. Вы идёте в
+              реальные разговоры по своему тёплому нетворку. Вместе проверяем,
+              за что готовы платить.
+            </p>
+            <p className="hero-question">
+              Устали ждать, пока клиенты сами начнут кидаться в вас деньгами?
+            </p>
+          </div>
           <a className="button button-accent" href="#start">
             Хочу следующего клиента
           </a>
@@ -96,46 +120,24 @@ export default function Home() {
       </section>
 
       <section className="recognition section-pad">
-        <div className="wrap two-col">
-          <div>
-            <p className="kicker">Кому это</p>
-            <h2>
-              Почему в личной практике профика нет новых клиентов?
-              <br /><br />
-              Почему у такого крутого профессионала так мало клиентов?
-            </h2>
-          </div>
-          <ul className="check-list">
-            {fit.map((item) => (
-              <li key={item}>
-                <span>+</span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="proof section-pad">
         <div className="wrap">
-          <div className="section-head">
-            <p className="kicker">Последние кейсы</p>
-            <h2>Последние кейсы</h2>
-          </div>
-          <div className="case-grid">
-            {cases.map((item) => (
-              <article className="case-card" key={item.who}>
-                <p className="case-who">{item.who}</p>
-                <p className="case-result">{item.result}</p>
-                <p className="case-time">{item.time}</p>
-              </article>
-            ))}
-          </div>
-          <div className="big-proof">
-            <strong>300К+</strong>
-            <p>
-              и до десятка клиентов с чеками 300К+ за полгода
+          <div className="section-head recognition-head">
+            <p className="kicker">Кому это</p>
+            <h2>Почему у такого крутого профессионала так мало клиентов?</h2>
+            <p className="recognition-note">
+              Если задолбались учиться и повышать квалификацию — тут не нужен
+              ещё один курс.
             </p>
+          </div>
+          <div className="recognition-lists">
+            <div>
+              <h3>Кто вы</h3>
+              <OfferList items={audience} />
+            </div>
+            <div>
+              <h3>Что происходит</h3>
+              <OfferList items={symptoms} />
+            </div>
           </div>
         </div>
       </section>
@@ -143,20 +145,13 @@ export default function Home() {
       <section className="principles section-pad">
         <div className="wrap">
           <p className="kicker kicker-light">Как ищем клиентов</p>
-          <h2>
-            По тёплому нетворку.
-          </h2>
-          <div className="principle-row">
-            <span>Без холодняка</span>
-            <span>Без рекламы</span>
-            <span>Без спама</span>
-            <span>Без инфобиза</span>
-            <span>Без лишних затрат</span>
-          </div>
+          <h2>По тёплому нетворку.</h2>
           <p className="principle-copy">
             Клиентов ищем по тёплому нетворку. Не лезем в холодняк, рекламу,
-            рассылки, спам, не тратим лишних денег. Не инфобизим, не обманываем.
-            Не лезем в неизведанное.
+            рассылки, спам, не тратим лишних денег.
+          </p>
+          <p className="method-note">
+            Поиск проблемы, стоящей решения, через экспертность и нетворк.
           </p>
         </div>
       </section>
@@ -165,17 +160,45 @@ export default function Home() {
         <div className="wrap">
           <div className="section-head split-head">
             <div>
-              <p className="kicker">Чаще всего понадобится</p>
+              <p className="kicker">Как это работает</p>
               <h2>Докрутить предложение и пойти с людьми пить кофе.</h2>
             </div>
-            <p>
-              Докрутить предложение / оффер / гипотезу. Посмотреть, что объединяет
-              текущих клиентов. Собрать гипотезы на проверку и критерии целевых
-              людей-заказчиков: их роли, контекст, ожидания, точки принятия решения.
-              Посидеть над своей записной книжкой, вспомнить, кто близок к таким,
-              и пойти с ними попить кофе.
-            </p>
+            <div className="process-intro">
+              <p className="process-definition">
+                <strong>
+                  Гипотеза здесь — кому и с каким предложением идём.
+                </strong>
+              </p>
+              <p>
+                Чаще всего понадобится докрутить предложение / оффер /
+                гипотезу. Посмотреть, что объединяет текущих клиентов. Собрать
+                критерии целевых людей-заказчиков: их роли, контекст, ожидания,
+                точки принятия решения.
+              </p>
+            </div>
           </div>
+
+          <div className="role-grid" aria-label="Роли в работе">
+            <article>
+              <p className="role-label">Я</p>
+              <p>
+                Помогаю собрать контекст, докрутить предложение и гипотезы на
+                проверку.
+              </p>
+            </article>
+            <article>
+              <p className="role-label">Вы</p>
+              <p>
+                Сидите над своей записной книжкой, вспоминаете, кто близок к
+                таким, и идёте с ними попить кофе.
+              </p>
+            </article>
+          </div>
+
+          <p className="process-cadence">
+            3 сессии за 4 недели. Между ними — разговоры по тёплому нетворку.
+          </p>
+
           <div className="session-list">
             {sessions.map((session) => (
               <article className="session" key={session.number}>
@@ -185,6 +208,24 @@ export default function Home() {
                   <p>{session.text}</p>
                   <p className="homework">{session.homework}</p>
                 </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="proof section-pad">
+        <div className="wrap">
+          <div className="section-head">
+            <p className="kicker">Что уже получалось</p>
+            <h2>Последние кейсы</h2>
+          </div>
+          <div className="case-grid">
+            {cases.map((item) => (
+              <article className="case-card" key={item.who}>
+                <p className="case-who">{item.who}</p>
+                <p className="case-result">{item.result}</p>
+                <p className="case-time">{item.time}</p>
               </article>
             ))}
           </div>
@@ -212,9 +253,7 @@ export default function Home() {
         <div className="wrap start-grid">
           <div>
             <p className="kicker">Найду вам следующего клиента</p>
-            <h2>
-              За 4 недели работы.
-            </h2>
+            <h2>За 4 недели работы.</h2>
             <p className="start-copy">
               Всё собираем в живом диалоге, никаких брифов, табличек, формочек.
               Разговоры пишем, отдаём ИИшке.

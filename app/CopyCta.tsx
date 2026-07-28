@@ -20,12 +20,14 @@ export function CopyCta() {
 
   return (
     <div className="copy-cta">
-      <p className="copy-label">Найду вам следующего клиента</p>
+      <p className="copy-label">Сообщение для старта</p>
       <p className="copy-message">{message}</p>
       <button className="button button-dark" type="button" onClick={copyMessage}>
         {copied ? "Скопировано ✓" : "Скопировать сообщение"}
       </button>
-      <p className="copy-hint">Всё собираем в живом диалоге.</p>
+      <p className="copy-hint">
+        Скопируйте и отправьте мне там, где мы уже общаемся.
+      </p>
     </div>
   );
 }

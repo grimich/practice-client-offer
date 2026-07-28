@@ -14,10 +14,6 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
   background: var(--paper);
@@ -83,8 +79,11 @@ a {
   align-self: flex-start;
   border: 1px solid var(--ink);
   border-radius: 99px;
-  padding: 9px 13px;
+  padding: 10px 14px;
   max-width: min(680px, 100%);
+  background: var(--acid);
+  font-size: 13px;
+  line-height: 1.35;
 }
 
 h1,
@@ -97,7 +96,7 @@ p {
 h1 {
   margin: 36px 0 48px;
   max-width: 1060px;
-  font-size: clamp(64px, 9.7vw, 138px);
+  font-size: clamp(64px, 8.8vw, 126px);
   line-height: 0.87;
   letter-spacing: -0.075em;
   font-weight: 800;
@@ -119,10 +118,21 @@ h1 em {
 }
 
 .hero-copy {
-  max-width: 590px;
+  max-width: 680px;
   margin: 0;
   font-size: clamp(19px, 2vw, 25px);
   line-height: 1.45;
+}
+
+.hero-copy-stack {
+  max-width: 680px;
+}
+
+.hero-question {
+  margin: 18px 0 0;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.4;
 }
 
 .button {
@@ -193,6 +203,31 @@ h2 {
 
 .recognition {
   background: white;
+}
+
+.recognition-head {
+  max-width: 920px;
+}
+
+.recognition-note {
+  max-width: 720px;
+  margin: 32px 0 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(22px, 2.5vw, 34px);
+  line-height: 1.25;
+}
+
+.recognition-lists {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 80px;
+}
+
+.recognition-lists h3 {
+  margin: 0 0 20px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .check-list {
@@ -315,10 +350,19 @@ h2 {
 
 .principle-copy {
   max-width: 760px;
-  margin: 0 0 0 auto;
+  margin: 56px 0 0 auto;
   font-family: var(--font-serif), Georgia, serif;
   font-size: clamp(25px, 3.2vw, 42px);
   line-height: 1.2;
+}
+
+.method-note {
+  max-width: 760px;
+  margin: 32px 0 0 auto;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .process {
@@ -331,10 +375,57 @@ h2 {
   gap: 100px;
 }
 
-.split-head > p {
+.process-intro {
   margin: 36px 0 0;
+}
+
+.process-intro p {
+  margin: 0;
   font-size: 17px;
   line-height: 1.55;
+}
+
+.process-intro .process-definition {
+  margin-bottom: 18px;
+  font-size: 20px;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin-bottom: 40px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+}
+
+.role-grid article {
+  padding: 28px;
+  background: var(--paper);
+}
+
+.role-grid p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.role-grid .role-label {
+  margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.process-cadence {
+  margin: 0 0 64px;
+  padding: 24px 28px;
+  background: var(--acid);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(24px, 3vw, 38px);
+  line-height: 1.2;
 }
 
 .session-list {
@@ -504,9 +595,9 @@ h2 {
 
   h1 {
     margin-top: 24px;
-    font-size: clamp(58px, 17.5vw, 96px);
-    overflow-wrap: anywhere;
-    word-break: break-word;
+    font-size: clamp(48px, 13.5vw, 78px);
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   h1 em {
@@ -517,6 +608,8 @@ h2 {
   .two-col,
   .big-proof,
   .split-head,
+  .recognition-lists,
+  .role-grid,
   .honesty-grid,
   .start-grid {
     grid-template-columns: 1fr;
@@ -529,7 +622,7 @@ h2 {
   }
 
   .hero-bottom .button {
-    width: 100%;
+    display: none;
   }
 
   .scribble {
@@ -556,7 +649,7 @@ h2 {
     gap: 24px;
   }
 
-  .split-head > p {
+  .process-intro {
     margin-top: 0;
   }
 
@@ -622,10 +715,6 @@ h2 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   .button {
     transition: none;
   }
